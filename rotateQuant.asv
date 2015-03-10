@@ -1,8 +1,0 @@
-%home work 2
-function [Prot] = rotateQuant(q,p)
-    w = q(1);
-    v1 = q(2);
-    
-    
-    
-end
