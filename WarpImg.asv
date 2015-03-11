@@ -45,8 +45,5 @@ function  [NewImage] = WarpImg(T,ImgX2,ImgY2,Img1,Img2)
     NewImage(1+offset(2): h1+ offset(2),  1+ offset(1):w1+offset(1),:) = double(Img1(1:h1,1:w1,:));
     
     
-    figure;
-    image(NewImage/255);
-    axis NewImage;
-    title('Jason New Image');
+    f
 end
