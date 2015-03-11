@@ -1,5 +1,5 @@
 %compute the H transform matrix.
-function [ImgX1,ImgY1,ImgX2,ImgY2] = MosGetCor()
+function [ImgX1,ImgY1,ImgX2,ImgY2, Img1, Img2,Imgh1,Imgw1,Imgh2,Imgw2] = MosGetCor()
     Img1 = double(imread('wdc1.jpg'));
     [Imgh1,Imgw1,Imgd1] = size(Img1);
     
@@ -13,14 +13,20 @@ function [ImgX1,ImgY1,ImgX2,ImgY2] = MosGetCor()
     axis image;
     hold on;
     title('The first component');
+    [ImgX1, ImgY1] = ginput2(2);
     
     subplot(1,2,2);
     image(Img2/255);
+    axis image;
+    hold on
     title('The second component');
+    [ImgX2, ImgY2] = ginput2(2);
     
-    numclick = 2;
-    [ImgX1, ImgY1] = ginput2(numclick);
-    [ImgX2, ImgY2] = ginput2(numclick);
+    
+    
+
+    
+    
     
     
 end

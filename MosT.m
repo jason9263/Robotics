@@ -6,8 +6,8 @@ function [T] = MosT(ImgX1,ImgY1,ImgX2,ImgY2)
         1 1 0 0  ; 
         0 0 1 1 ]';	 
     
-    xp = [ X1 ; 
-           Y1 ];
+    xp = [ ImgX1 ; 
+           ImgY1 ];
     T  = Z \ xp; 
     %the rotation element
     a  = T(1); 
