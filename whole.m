@@ -48,20 +48,20 @@
     %for (1 1)
     V1 = T*[1;1;1];
     %for (w2 1)
-    V2 = T*[Imgw2;1;1];
+    V3 = T*[Imgw2;1;1];
     %for (1 h2)
-    V3 = T*[1; Imgh2; 1];
+    V2 = T*[1; Imgh2; 1];
     %for (w2, h2)
     V4 = T*[Imgw2; Imgh2; 1];
     
     NewPos = [V1 V2 V3 V4];
     
-    Xmin = min(NewPos(1,:));
-    Xmax = max(NewPos(1,:));
-    Ymin = min(NewPos(2,:));
-    Ymax = max(NewPos(2,:));
-    Xwidth = [Xmin, Xmax];
-    Yheight = [Ymin, Ymax];
+    Xmin = min( [ NewPos(1,:) 0]);
+    Xmax = max( [NewPos(1,:) Imgw1]);
+    Ymin = min( [ NewPos(2,:) 0]);
+    Ymax = max( [NewPos(2,:) Imgh1]);
+    Xwidth = [Xmin: Xmax];
+    Yheight = [Ymin: Ymax];
     
     % the main idea is compute the second image in previous image
     % and copy the else part of the previous image
@@ -93,7 +93,7 @@
     
     figure;
     image(NewImage/255);
-    axis NewImage;
+    axis image;
     title('Jason New Image');
     
     
