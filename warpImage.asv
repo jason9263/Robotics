@@ -45,7 +45,7 @@ function  [Iwarp,Imerge] = warpImage(Img2,Img1,T)
     Imerge(:,:,2) = interp2(Img2(:,:,2),Xindex, Yindex, '*bilinear');
     Imerge(:,:,3) = interp2(Img2(:,:,3),Xindex, Yindex, '*bilinear');
     Iwarp = Imerge;
-    figure;
+    figure Iwarp;
     image(Iwarp/255);
     axis image;
     title('Jaosn wrap image');
