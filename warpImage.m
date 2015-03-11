@@ -1,5 +1,12 @@
 % warp image
-function  [NewImage] = WarpImg(T,Imgh1, Imgw1,Imgh2,Imgw2,Img1,Img2)
+function  [NewImage] = warpImage(Img2,Img1,T)
+    [Imgh1,Imgw1,Imgd1] = size(Img1);
+    
+    
+    
+    [Imgh2,Imgw2,Imgd2] = size(Img2);
+
+
     V1 = T*[1;1;1];
     %for (w2 1)
     V3 = T*[Imgw2;1;1];
@@ -40,7 +47,7 @@ function  [NewImage] = WarpImg(T,Imgh1, Imgw1,Imgh2,Imgw2,Img1,Img2)
     NewImage(:,:,2) = interp2(Img2(:,:,2),Xindex, Yindex, '*bilinear');
     NewImage(:,:,3) = interp2(Img2(:,:,3),Xindex, Yindex, '*bilinear');
     %compute the offset of the second images
-    offset = -round( [  min( [NewPos(1,:),0] ), min( [NewPos(2,:),0] )]  )
+    offset = -round( [  min( [NewPos(1,:),0] ), min( [NewPos(2,:),0] )]  );
     
     NewImage(1+offset(2): Imgh1+ offset(2),  1+ offset(1):Imgw1+offset(1), : ) = double(Img1(1:Imgh1,1:Imgw1,:));
     
