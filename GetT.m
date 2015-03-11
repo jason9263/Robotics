@@ -1,5 +1,5 @@
 %compute the H transform matrix.
-function [ImgX1,ImgY1,ImgX2,ImgY2, Img1, Img2] = MosGetCor()
+function [ImgX1,ImgY1,ImgX2,ImgY2, Img1, Img2] = GetT()
     Img1 = double(imread('wdc1.jpg'));
     [Imgh1,Imgw1,Imgd1] = size(Img1);
     
