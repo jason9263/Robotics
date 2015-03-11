@@ -11,8 +11,7 @@ for i=1:n
     set(text_handle,'Color',[1 1 1])
 end
 
-    points = [X Y];
-    save('points.mat','points');
+save('points.mat','');
 
 
 end
