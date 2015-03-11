@@ -1,23 +1,21 @@
 % warp image
 function  [NewImage] = WarpImg(T,Imgh1, Imgw1,Imgh2,Imgw2,Img1,Img2)
-    %compute the show area
-    %for (1 1)
     V1 = T*[1;1;1];
     %for (w2 1)
-    V2 = T*[Imgw2;1;1];
+    V3 = T*[Imgw2;1;1];
     %for (1 h2)
-    V3 = T*[1; Imgh2; 1];
+    V2 = T*[1; Imgh2; 1];
     %for (w2, h2)
     V4 = T*[Imgw2; Imgh2; 1];
     
     NewPos = [V1 V2 V3 V4];
     
-    Xmin = min(NewPos(1,:));
-    Xmax = max(NewPos(1,:));
-    Ymin = min(NewPos(2,:));
-    Ymax = max(NewPos(2,:));
-    Xwidth = [Xmin, Xmax];
-    Yheight = [Ymin, Ymax];
+    Xmin = min( [ NewPos(1,:) 0]);
+    Xmax = max( [NewPos(1,:) Imgw1]);
+    Ymin = min( [ NewPos(2,:) 0]);
+    Ymax = max( [NewPos(2,:) Imgh1]);
+    Xwidth = [Xmin: Xmax];
+    Yheight = [Ymin: Ymax];
     
     % the main idea is compute the second image in previous image
     % and copy the else part of the previous image
@@ -38,7 +36,7 @@ function  [NewImage] = WarpImg(T,Imgh1, Imgw1,Imgh2,Imgw2,Img1,Img2)
     Yindex = reshape(InverseImg(2,:), NewX, NewY)';
     
     %we get RGB information, respectively
-    NewImage(:,:,1) = interp2(Img2(:,:,1),Xindex, Yindex,'*bilinear');
+    NewImage(:,:,1) = interp2(Img2(:,:,1),Xindex, Yindex, '*bilinear');
     NewImage(:,:,2) = interp2(Img2(:,:,2),Xindex, Yindex, '*bilinear');
     NewImage(:,:,3) = interp2(Img2(:,:,3),Xindex, Yindex, '*bilinear');
     %compute the offset of the second images
@@ -49,6 +47,7 @@ function  [NewImage] = WarpImg(T,Imgh1, Imgw1,Imgh2,Imgw2,Img1,Img2)
     
     figure;
     image(NewImage/255);
-    axis NewImage;
+    axis image;
     title('Jason New Image');
+    
 end
