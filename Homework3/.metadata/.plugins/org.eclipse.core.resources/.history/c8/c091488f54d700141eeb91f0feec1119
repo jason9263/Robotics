@@ -1,0 +1,42 @@
+import lejos.nxt.*;
+
+/**
+ * A more object - oriented code.  the main method just starts the program
+ * @author Roger
+ */
+public class RotationTest
+{
+
+    public static void main(String args[])
+    {
+        LCD.drawString("Rotation", 0, 0);//display program name before running
+        Button.waitForPress();
+        LCD.clear();
+        RotationTest robot = new RotationTest();
+        robot.go();// create an instance of the class and calls go
+
+    }
+
+    /**
+     * this method does the actual work
+     */
+    public void go()
+    {
+        rotate720();
+        Motor.A.setSpeed(800);
+        rotate720();
+    }
+
+    /**
+     * helper method for go(); stops motor when button ia pressed
+     */
+    public void rotate720()
+    {
+        Motor.A.rotate(720);
+        LCD.drawInt(Motor.A.getTachoCount(), 4, 0, 1);
+        Motor.A.rotateTo(0);
+        LCD.drawInt(Motor.A.getTachoCount(), 4, 0, 2);
+        Button.waitForPress();
+    }
+}
+
