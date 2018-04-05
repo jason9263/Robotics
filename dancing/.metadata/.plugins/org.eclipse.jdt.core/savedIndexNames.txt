@@ -1,1 +1,0 @@
-INDEX VERSION 1.127+C:\Users\dellxps\Documents\GitHub\cse525-robotics\dancing\.metadata\.plugins\org.eclipse.jdt.core
